@@ -1,0 +1,28 @@
+<%= polaris_page(
+  title: "Order Details",
+  back_url: orders_path
+) do %>
+  <%= polaris_card(title: "Order ID") do |card| %>
+    <% card.with_section do %>
+      <%= @order.name %>
+    <% end %>
+
+    <% card.with_section(title: "Total Price") do |section| %>
+      <%= @order.total_price %>
+    <% end %>
+
+    <% card.with_section(title: "Financial Status") do |section| %>
+      <%= @order.financial_status %>
+    <% end %>
+
+    <% card.with_section(title: "Fulfillment Status") do |section| %>
+      <%= @order.fulfillment_status %>
+    <% end %>
+
+    <% card.with_section do |section| %>
+      <% section.with_subsection do %>
+        <b><i>Congratulations, your order has been delivered.</i></b>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,21 @@
+<%= polaris_page(
+  title: "Orders (#{@graphql ? "Graphql" : "REST"})",
+  back_url: home_path
+) do %>
+  <%= polaris_card(sectioned: false) do %>
+    <%= polaris_index_table(@orders) do |table| %>
+      <% table.with_column("Order ID") do |row| %>
+        <%= polaris_link(url: order_url(row[:id]), no_underline: true) { row[:name] } %>
+      <% end %>
+      <% table.with_column("Total Price") do |row| %>
+        <%= row[:total_price] %>
+      <% end %>
+      <% table.with_column("Financial Status") do |row| %>
+        <%= row[:financial_status] %>
+      <% end %>
+      <% table.with_column("Fulfillment Status") do |row| %>
+        <%= row[:fulfillment_status] %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

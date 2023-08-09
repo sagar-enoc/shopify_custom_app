@@ -3,10 +3,10 @@ ShopifyApp.configure do |config|
   config.old_secret = ""
   # Consult this page for more scope options:
   # https://help.shopify.com/en/api/getting-started/authentication/oauth/scopes
-  config.scope = "read_products, write_products"
+  config.scope = "read_merchant_managed_fulfillment_orders,read_draft_orders,read_orders,read_products, write_products"
   config.embedded_app = true
   config.after_authenticate_job = false
-  config.api_version = "2023-01"
+  config.api_version = "2023-07"
   config.shop_session_repository = 'Shop'
 
   config.reauth_on_access_scope_changes = true
@@ -20,12 +20,12 @@ ShopifyApp.configure do |config|
   # approve the purchase.
   #
   # Learn more about billing in our documentation: https://shopify.dev/apps/billing
-  config.billing = ShopifyApp::BillingConfiguration.new(
-    charge_name: "My app billing charge",
-    amount: 5,
-    interval: ShopifyApp::BillingConfiguration::INTERVAL_EVERY_30_DAYS,
-    currency_code: "USD", # Only supports USD for now
-  )
+  # config.billing = ShopifyApp::BillingConfiguration.new(
+  #   charge_name: "My app billing charge",
+  #   amount: 5,
+  #   interval: ShopifyApp::BillingConfiguration::INTERVAL_EVERY_30_DAYS,
+  #   currency_code: "USD", # Only supports USD for now
+  # )
 
   if defined? Rails::Server
     raise('Missing SHOPIFY_API_KEY. See https://github.com/Shopify/shopify_app#requirements') unless config.api_key

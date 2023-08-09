@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/home', to: 'home#index'
 
   resources :products, only: [:index]
+  resources :orders, only: [:index, :show]
   resource :messages, only: :create
   resource :redirect, only: :new
 
