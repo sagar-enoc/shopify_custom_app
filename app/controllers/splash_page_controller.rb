@@ -5,5 +5,6 @@ class SplashPageController < ApplicationController
 
   def index
     @shop_origin = current_shopify_domain
+    @loading_path = params[:id].present? ? order_path(params[:id]) : (params[:return_to] || home_path)
   end
 end
